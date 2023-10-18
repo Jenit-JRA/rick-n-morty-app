@@ -2,6 +2,9 @@
 import React, { useEffect, useState } from 'react';
 import { useSearch } from '../Services/SearchContext';
 import './RickAndMorty.css';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import Grid from '@mui/material/Grid';
 
 function RickAndMorty() {
   const { state, dispatch } = useSearch();
@@ -84,11 +87,18 @@ function RickAndMorty() {
 
   return (
     <div className='rick-and-morty-app'>
-      <h2>Rick and Morty Characters</h2>
-      <div className='search-bar'>
-        <input
-          type='text'
-          placeholder='Search for characters'
+      <Grid
+        boxShadow={2}
+        padding={5}
+        gap={2}
+        display={'flex'}
+        justifyContent={'center'}
+        flexDirection={'row'}
+      >
+        <TextField
+          id="outlined-search"
+          label="Search for your characters"
+          type="search"
           value={searchInput}
           onChange={handleSearchInputChange}
         />
@@ -105,35 +115,42 @@ function RickAndMorty() {
           <option value='Dead'>Dead</option>
           <option value='unknown'>Unknown</option>
         </select>
-      </div>
+      </Grid>
       <div className='character-list'>
         {charactersToDisplay.map((character) => (
           <div key={character.id} className='character-card'>
             <img src={character.image} alt={character.name} />
             <h3>{character.name}</h3>
-            <button onClick={() => handleShowDetails(character)}>
+            <Button
+              variant="outlined"
+              onClick={() => handleShowDetails(character)}>
               {selectedCharacter && selectedCharacter.id === character.id
                 ? 'Hide Details'
                 : 'Show Details'}
-            </button>
+            </Button>
             {selectedCharacter && selectedCharacter.id === character.id && (
               <div className='character-details'>
                 <h2>{selectedCharacter.name}</h2>
                 <p>Status: {selectedCharacter.status}</p>
                 <p>Species: {selectedCharacter.species}</p>
-                {/* Add more character details here */}
               </div>
             )}
           </div>
         ))}
       </div>
       <div className="pagination">
-        <button onClick={handlePrevPage} disabled={currentPage === 1}>
+        <Button
+          variant="outlined"
+          onClick={handlePrevPage}
+          disabled={currentPage === 1}>
           Previous
-        </button>
-        <button onClick={handleNextPage} disabled={currentPage === totalPages}>
+        </Button>
+        <Button
+          variant="outlined"
+          onClick={handleNextPage}
+          disabled={currentPage === totalPages}>
           Next
-        </button>
+        </Button>
       </div>
       <div className="page-info">
         Page {currentPage} of {totalPages}

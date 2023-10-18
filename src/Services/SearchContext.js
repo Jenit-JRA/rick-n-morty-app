@@ -31,4 +31,4 @@ export const useSearch = () => {
   return useContext(SearchContext);
 };
 
-export default SearchContext; // Export the context for easy import
+export default SearchContext; 

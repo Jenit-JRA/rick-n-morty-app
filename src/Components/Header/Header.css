@@ -1,0 +1,12 @@
+.header-containor{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: rgba(177, 177, 141, 0.648);
+    align-items:center;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+h1{
+    font-family: cursive;
+}
