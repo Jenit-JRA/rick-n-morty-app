@@ -6,7 +6,7 @@ function Header() {
 
   return (
     <header>
-      <h1>Customer Profile</h1>
+      <h1>Welcome to Rick And Morty UI</h1>
       {loggedIn && <button onClick={logout}>Logout</button>}
     </header>
   );
